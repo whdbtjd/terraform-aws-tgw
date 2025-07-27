@@ -1,3 +1,4 @@
+# tf파일 전역에서 사용할 맵 변수
 locals {
   subnet_ids = {
     "vpc-a" = aws_subnet.subnet-a.id

@@ -54,6 +54,16 @@ resource "aws_subnet" "subnet-c" {
 # 각 vpc에 라우팅 테이블 생성
 resource "aws_route_table" "rt-a" {
   vpc_id = aws_vpc.vpc-a.id
+  
+  route {
+    cidr_block         = "172.16.20.0/24"
+    transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  }
+
+  route {
+    cidr_block         =  "192.168.20.0/24"
+    transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  }
 
   tags = {
     Name = "rt-a"
@@ -63,6 +73,16 @@ resource "aws_route_table" "rt-a" {
 resource "aws_route_table" "rt-b" {
   vpc_id = aws_vpc.vpc-b.id
 
+  route {
+    cidr_block = "192.168.20.0/24"
+    transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  }
+
+  route {
+    cidr_block = "10.0.1.0/24"
+    transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  }
+
   tags = {
     Name = "rt-b"
   }
@@ -70,6 +90,16 @@ resource "aws_route_table" "rt-b" {
 
 resource "aws_route_table" "rt-c" {
   vpc_id = aws_vpc.vpc-c.id
+
+  route {
+    cidr_block = "172.16.20.0/24"
+    transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  }
+
+  route {
+    cidr_block = "10.0.1.0/24"
+    transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  }
 
   tags = {
     Name = "rt-c"

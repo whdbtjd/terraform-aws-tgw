@@ -1,3 +1,4 @@
+# tgw 생성
 resource "aws_ec2_transit_gateway" "tgw" {
     description = "tgw"
 
@@ -6,6 +7,7 @@ resource "aws_ec2_transit_gateway" "tgw" {
     }
 }
 
+# tgw와 서브넷간 명시적 연결
 resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-vpc-a" {
     subnet_ids         = [aws_subnet.subnet-a.id]
     transit_gateway_id = aws_ec2_transit_gateway.tgw.id
