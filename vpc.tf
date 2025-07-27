@@ -75,3 +75,19 @@ resource "aws_route_table" "rt-c" {
     Name = "rt-c"
   }
 }
+
+# 라우팅 테이블과 서브넷 연결
+resource "aws_route_table_association" "rt-sb-a" {
+    subnet_id = aws_subnet.subnet-a.id
+    route_table_id = aws_route_table.rt-a.id
+}
+
+resource "aws_route_table_association" "rt-sb-b" {
+    subnet_id = aws_subnet.subnet-b.id
+    route_table_id = aws_route_table.rt-b.id
+}
+
+resource "aws_route_table_association" "rt-sb-c" {
+    subnet_id = aws_subnet.subnet-c.id
+    route_table_id = aws_route_table.rt-c.id
+}
