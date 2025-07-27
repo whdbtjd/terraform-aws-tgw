@@ -18,15 +18,13 @@ resource "aws_security_group" "tgw_sg" {
 resource "aws_vpc_security_group_ingress_rule" "tgw_sg_ingress_ssh" {
   for_each = {
     "vpc_a" = aws_vpc.vpc-a.cidr_block
-    "vpc_b" = aws_vpc.vpc-b.cidr_block
-    "vpc_c" = aws_vpc.vpc-c.cidr_block
   }
 
   from_port         = 22
   ip_protocol       = "tcp"
   to_port           = 22
   security_group_id = aws_security_group.tgw_sg[each.key].id
-  cidr_ipv4         = each.key == "vpc_a" ? "0.0.0.0/0" : each.value
+  cidr_ipv4         = "0.0.0.0/0"
 }
 
 # 보안그룹 인바운드 규칙 정의 (ICMP - ping)
