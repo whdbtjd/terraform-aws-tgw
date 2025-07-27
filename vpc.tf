@@ -65,6 +65,11 @@ resource "aws_route_table" "rt-a" {
     transit_gateway_id = aws_ec2_transit_gateway.tgw.id
   }
 
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
   tags = {
     Name = "rt-a"
   }
@@ -120,4 +125,13 @@ resource "aws_route_table_association" "rt-sb-b" {
 resource "aws_route_table_association" "rt-sb-c" {
   subnet_id      = aws_subnet.subnet-c.id
   route_table_id = aws_route_table.rt-c.id
+}
+
+# igw 생성
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.vpc-a.id
+
+  tags = {
+    Name = "igw-a"
+  }
 }
