@@ -1,7 +1,7 @@
 # tf파일 전역에서 사용할 맵 변수
 locals {
   subnet_ids = {
-    "vpc-a" = aws_subnet.subnet-a.id
+    "vpc_a" = aws_subnet.subnet-a.id
     "vpc_b" = aws_subnet.subnet-b.id
     "vpc_c" = aws_subnet.subnet-c.id
   }
@@ -26,20 +26,20 @@ data "aws_ami" "amazon_linux_2" {
 
 # 인스턴스 생성
 resource "aws_instance" "ec2-tgw" {
-    for_each = {
-      "vpc-a" = aws_vpc.vpc-a.id
-      "vpc_b" = aws_vpc.vpc-b.id
-      "vpc_c" = aws_vpc.vpc-c.id
-    }
+  for_each = {
+    "vpc_a" = aws_vpc.vpc-a.id
+    "vpc_b" = aws_vpc.vpc-b.id
+    "vpc_c" = aws_vpc.vpc-c.id
+  }
 
-    ami                    = data.aws_ami.amazon_linux_2.id
-    instance_type          = "t3.micro"
-    associate_public_ip_address = each.key == "vpc-a" ? true : false # ping테스트를 위해 퍼블릭 ip 할당
-    subnet_id              = local.subnet_ids[each.key]
-    key_name               = aws_key_pair.ec2-key.key_name   # key_name을 통해 문자열 형태로 제공해줘야 함
-    vpc_security_group_ids = [aws_security_group.tgw_sg[each.key].id]
+  ami                         = data.aws_ami.amazon_linux_2.id
+  instance_type               = "t3.micro"
+  associate_public_ip_address = each.key == "vpc_a" ? true : false
+  subnet_id                   = local.subnet_ids[each.key]
+  key_name                    = aws_key_pair.ec2-key.key_name
+  vpc_security_group_ids      = [aws_security_group.tgw_sg[each.key].id]
 
-    tags = {
-        Name = "web-server-${each.key}"
-    }
+  tags = {
+    Name = "web-server-${each.key}"
+  }
 }
