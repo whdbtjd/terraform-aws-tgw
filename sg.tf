@@ -27,5 +27,5 @@ resource "aws_vpc_security_group_ingress_rule" "tgw_sg_ingress" {
     to_port = 22
 
     security_group_id = aws_security_group.tgw_sg[each.key].id
-    cidr_ipv4         = each.value
+    cidr_ipv4         = each.value == aws_vpc.vpc-a.cidr_block ? "0.0.0.0/0" : each.value
 }
