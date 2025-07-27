@@ -56,12 +56,12 @@ resource "aws_route_table" "rt-a" {
   vpc_id = aws_vpc.vpc-a.id
   
   route {
-    cidr_block         = "172.16.0.0/24"
+    cidr_block         = "172.16.0.0/16"
     transit_gateway_id = aws_ec2_transit_gateway.tgw.id
   }
 
   route {
-    cidr_block         =  "192.168.0.0/24"
+    cidr_block         =  "192.168.0.0/16"
     transit_gateway_id = aws_ec2_transit_gateway.tgw.id
   }
 
@@ -79,12 +79,12 @@ resource "aws_route_table" "rt-b" {
   vpc_id = aws_vpc.vpc-b.id
 
   route {
-    cidr_block = "192.168.0.0/24"
+    cidr_block = "192.168.0.0/16"
     transit_gateway_id = aws_ec2_transit_gateway.tgw.id
   }
 
   route {
-    cidr_block = "10.0.0.0/24"
+    cidr_block = "10.0.0.0/16"
     transit_gateway_id = aws_ec2_transit_gateway.tgw.id
   }
 
@@ -97,12 +97,12 @@ resource "aws_route_table" "rt-c" {
   vpc_id = aws_vpc.vpc-c.id
 
   route {
-    cidr_block = "172.16.0.0/24"
+    cidr_block = "172.16.0.0/16"
     transit_gateway_id = aws_ec2_transit_gateway.tgw.id
   }
 
   route {
-    cidr_block = "10.0.0.0/24"
+    cidr_block = "10.0.0.0/16"
     transit_gateway_id = aws_ec2_transit_gateway.tgw.id
   }
 
