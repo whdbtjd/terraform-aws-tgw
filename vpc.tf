@@ -30,5 +30,16 @@ resource "aws_subnet" "subnet-c" {
 # 각 vpc에 라우팅 테이블 생성
 resource "aws_route_table" "rt-a" {
     vpc_id = aws_vpc.vpc-a.id
+
+}
+
+resource "aws_route_table" "rt-b" {
+    vpc_id = aws_vpc.vpc-b.id
+
+}
+
+resource "aws_route_table" "rt-c" {
+    vpc_id = aws_vpc.vpc-c.id
+
 }
 
