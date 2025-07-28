@@ -34,7 +34,7 @@ resource "aws_instance" "ec2-tgw" {
 
   ami                         = data.aws_ami.amazon_linux_2.id
   instance_type               = "t3.micro"
-  associate_public_ip_address = each.key == "vpc_a" ? true : false
+  associate_public_ip_address = each.key == "vpc_a" ? true : false # ping 테스트를 위해 a인스턴스엔 퍼블릭ip 부여
   subnet_id                   = local.subnet_ids[each.key]
   key_name                    = aws_key_pair.ec2-key.key_name
   vpc_security_group_ids      = [aws_security_group.tgw_sg[each.key].id]
