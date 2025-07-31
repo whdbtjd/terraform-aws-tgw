@@ -1,7 +1,7 @@
 ## 구성도
 
 
-<img width="1371" height="762" alt="adfasdf drawio" src="https://github.com/user-attachments/assets/d67df7e4-7492-48b1-8946-a911862f7654" />
+<img width="1371" height="762" alt="asdfasfcc drawio" src="https://github.com/user-attachments/assets/edb4bded-7519-4224-a14b-4f3a31ea2af9" />
 
 
 
