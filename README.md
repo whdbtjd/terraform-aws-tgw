@@ -1,6 +1,7 @@
 ## 구성도
 
-![Uploading adfasdf.drawio.png…]()
+
+<img width="1371" height="762" alt="adfasdf drawio" src="https://github.com/user-attachments/assets/d67df7e4-7492-48b1-8946-a911862f7654" />
 
 
 
