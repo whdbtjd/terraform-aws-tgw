@@ -35,7 +35,7 @@ resource "aws_subnet" "subnet-a" {
 
 resource "aws_subnet" "subnet-b" {
   vpc_id     = aws_vpc.vpc-b.id
-  cidr_block = "172.16.20.0/24"
+  cidr_block = "172.16.0.0/24"
 
   tags = {
     Name = "subnet-b"
@@ -44,7 +44,7 @@ resource "aws_subnet" "subnet-b" {
 
 resource "aws_subnet" "subnet-c" {
   vpc_id     = aws_vpc.vpc-c.id
-  cidr_block = "192.168.20.0/24"
+  cidr_block = "192.168.0.0/24"
 
   tags = {
     Name = "subnet-c"
